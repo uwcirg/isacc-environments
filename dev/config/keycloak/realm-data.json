@@ -2855,13 +2855,13 @@
       {
         "id": "fe6ccba2-7bef-47db-8ca7-32b916dcdd8a",
         "clientId": "hello_world_client",
-        "name": "Public Client",
-        "description": "Public Client SoF client app",
+        "name": "Enrollment Client",
+        "description": "ISACC Enrollment Client",
         "surrogateAuthRequired": false,
         "enabled": true,
         "alwaysDisplayInConsole": false,
         "clientAuthenticatorType": "client-secret",
-        "secret": "${__KEYCLOAK_FEMR_REALM_PUBCLIENT_OPENID_CLIENT_SECRET}",
+        "secret": "${__KEYCLOAK_FEMR_REALM_ENROLLMENT_OPENID_CLIENT_SECRET}",
         "redirectUris": [
           "*"
         ],
@@ -2924,13 +2924,13 @@
       {
         "id": "442354b5-a98c-4938-b62f-6333dc82435b",
         "clientId": "screener_openid_client",
-        "name": "Public Vue Client",
-        "description": "Public Client SoF Vue client app",
+        "name": "Messaging Client",
+        "description": "ISACC Messaging client app",
         "surrogateAuthRequired": false,
         "enabled": true,
         "alwaysDisplayInConsole": false,
         "clientAuthenticatorType": "client-secret",
-        "secret": "${__KEYCLOAK_FEMR_REALM_VUECLIENT_OPENID_CLIENT_SECRET}",
+        "secret": "${__KEYCLOAK_FEMR_REALM_MESSAGING_OPENID_CLIENT_SECRET}",
         "redirectUris": [
           "*"
         ],

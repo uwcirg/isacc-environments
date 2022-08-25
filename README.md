@@ -1,9 +1,7 @@
-# Hello World Environments
-Template, "Hello World" environments, generates a full stack functional
-project adhering (as closely as possible) to the SMART on FHIR (SoF)
-protocol.
-
-Intent combines a proof of concept with a functional demonstration of authentication, FHIR persistence and multiple SoF client types and interactions.
+# ISACC Environments
+ISACC environments, generates a full stack functional
+project conforming to the SMART on FHIR (SoF) protocol.
+To be continued...
 
 ## Product Elements
 - fEMR
@@ -14,8 +12,8 @@ Intent combines a proof of concept with a functional demonstration of authentica
   - [PostgreSQL](https://postgrest.org/en/stable/)
   - [Redis](https://redis.io/)
 - [Log Server](https://github.com/uwcirg/logserver)
-- [Public SoF React Client](https://github.com/uwcirg/helloworld-react-client-sof)
-- [Public SoF Vue Client](https://github.com/uwcirg/helloworld-vue-client-sof)
+- [Enrollment Client](https://github.com/uwcirg/isacc-enrollment-client-sof)
+- [Messaging Client](https://github.com/uwcirg/isacc-messaging-client-sof)
 
 ## Setup
 Clone this repo to your desired location and follow Setup steps in [`dev`](./dev/README.md), to setup a development deploy.

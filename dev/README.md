@@ -1,5 +1,5 @@
 # Development Configuration
-Sets up a development copy of Hello World (SoF) environments
+Sets up a development copy of ISACC environments
 
 
 ## Setup
