@@ -194,7 +194,7 @@ services:
 
 
   enrollment:
-    image: ghcr.io/uwcirg/isacc-enrollment-client-sof:${ENROLLMENT_IMAGE_TAG:-latest}
+    image: ghcr.io/uwcirg/isacc-messaging-client-sof:${ENROLLMENT_IMAGE_TAG:-latest}
     env_file:
       - enrollment.env
     depends_on:
