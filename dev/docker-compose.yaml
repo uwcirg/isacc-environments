@@ -19,7 +19,7 @@ services:
     env_file:
       femr.env
     environment:
-      APPLICATION_TITLE: HelloWorld
+      APPLICATION_TITLE: ISACC
       OIDC_AUTHORIZE_URL: "https://keycloak.${BASE_DOMAIN:-localtest.me}/auth/realms/fEMR/protocol/openid-connect/auth"
       OIDC_CLIENT_ID: femr_openid_client
       OIDC_ISSUER: "https://keycloak.${BASE_DOMAIN:-localtest.me}/auth/realms/fEMR"
@@ -32,7 +32,7 @@ services:
       MAP_API: "http://fhir-internal:8080/fhir/"
       # FHIR URL passed to SoF client
       SOF_HOST_FHIR_URL: 'https://fhirwall.${BASE_DOMAIN:-localtest.me}/fhir'
-      SOF_CLIENTS: '[{"id":"PUBCLIENT", "label":"React Client", "launch_url":"https://pubclient.${BASE_DOMAIN:-localtest.me}/launch.html"},{"id":"VUECLIENT", "label":"Vue Client", "launch_url":"https://vueclient.${BASE_DOMAIN:-localtest.me}/launch.html", "required_roles": ["clinician"]}]'
+      SOF_CLIENTS: '[{"id":"ENROLLMENT", "label":"Enrollment Client", "launch_url":"https://enrollment.${BASE_DOMAIN:-localtest.me}/launch.html"},{"id":"MESSAGING", "label":"Messaging Client", "launch_url":"https://messaging.${BASE_DOMAIN:-localtest.me}/launch.html"}]'
       LOGSERVER_URL: "https://logs.${BASE_DOMAIN:-localtest.me}"
       REDIS_URL: redis://redis:6379/1
     depends_on:
@@ -40,8 +40,8 @@ services:
       - keycloak
       - logs
       - redis
-      - pubclient
-      - vueclient
+      - enrollment
+      - messaging
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.femr-${COMPOSE_PROJECT_NAME}.rule=Host(`femr.${BASE_DOMAIN:-localtest.me}`)"
@@ -193,33 +193,33 @@ services:
       - internal
 
 
-  pubclient:
-    image: ghcr.io/uwcirg/helloworld-react-client-sof:${PUBCLIENT_IMAGE_TAG:-latest}
+  enrollment:
+    image: ghcr.io/uwcirg/isacc-enrollment-client-sof:${ENROLLMENT_IMAGE_TAG:-latest}
     env_file:
-      - pubclient.env
+      - enrollment.env
     depends_on:
       - fhir
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.pubclient-${COMPOSE_PROJECT_NAME}.rule=Host(`pubclient.${BASE_DOMAIN:-localtest.me}`)"
-      - "traefik.http.routers.pubclient-${COMPOSE_PROJECT_NAME}.entrypoints=websecure"
-      - "traefik.http.routers.pubclient-${COMPOSE_PROJECT_NAME}.tls=true"
-      - "traefik.http.routers.pubclient-${COMPOSE_PROJECT_NAME}.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.enrollment-${COMPOSE_PROJECT_NAME}.rule=Host(`enrollment.${BASE_DOMAIN:-localtest.me}`)"
+      - "traefik.http.routers.enrollment-${COMPOSE_PROJECT_NAME}.entrypoints=websecure"
+      - "traefik.http.routers.enrollment-${COMPOSE_PROJECT_NAME}.tls=true"
+      - "traefik.http.routers.enrollment-${COMPOSE_PROJECT_NAME}.tls.certresolver=letsencrypt"
     networks:
       - ingress
 
-  vueclient:
-    image: ghcr.io/uwcirg/helloworld-vue-client-sof:${VUECLIENT_IMAGE_TAG:-latest}
+  messaging:
+    image: ghcr.io/uwcirg/isacc-messaging-client-sof:${MESSAGING_IMAGE_TAG:-latest}
     env_file:
-      - vueclient.env
+      - messaging.env
     depends_on:
       - fhir
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.vueclient-${COMPOSE_PROJECT_NAME}.rule=Host(`vueclient.${BASE_DOMAIN:-localtest.me}`)"
-      - "traefik.http.routers.vueclient-${COMPOSE_PROJECT_NAME}.entrypoints=websecure"
-      - "traefik.http.routers.vueclient-${COMPOSE_PROJECT_NAME}.tls=true"
-      - "traefik.http.routers.vueclient-${COMPOSE_PROJECT_NAME}.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.messaging-${COMPOSE_PROJECT_NAME}.rule=Host(`messaging.${BASE_DOMAIN:-localtest.me}`)"
+      - "traefik.http.routers.messaging-${COMPOSE_PROJECT_NAME}.entrypoints=websecure"
+      - "traefik.http.routers.messaging-${COMPOSE_PROJECT_NAME}.tls=true"
+      - "traefik.http.routers.messaging-${COMPOSE_PROJECT_NAME}.tls.certresolver=letsencrypt"
     networks:
       - ingress
 
