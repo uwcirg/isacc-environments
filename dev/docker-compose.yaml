@@ -196,7 +196,7 @@ services:
   enrollment:
     image: ghcr.io/uwcirg/isacc-messaging-client-sof:${ENROLLMENT_IMAGE_TAG:-latest}
     environment:
-      REACT_APP_DASHBOARD_URL: "https://dashboard.${BASE_DOMAIN:-localtest.me}"
+      REACT_APP_DASHBOARD_URL: "https://femr.${BASE_DOMAIN:-localtest.me}"
       REACT_APP_CLIENT_ID: enrollment
     depends_on:
       - fhir
@@ -212,7 +212,7 @@ services:
   messaging:
     image: ghcr.io/uwcirg/isacc-messaging-client-sof:${MESSAGING_IMAGE_TAG:-latest}
     environment:
-      REACT_APP_DASHBOARD_URL: "https://dashboard.${BASE_DOMAIN:-localtest.me}"
+      REACT_APP_DASHBOARD_URL: "https://femr.${BASE_DOMAIN:-localtest.me}"
       REACT_APP_CLIENT_ID: messaging
     depends_on:
       - fhir
