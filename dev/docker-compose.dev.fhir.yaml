@@ -1,0 +1,13 @@
+# docker-compose development override for fhir service
+version: "3.7"
+services:
+  # expose HAPI to internet
+  fhir:
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.fhir-${COMPOSE_PROJECT_NAME}.rule=Host(`fhir.${BASE_DOMAIN:-localtest.me}`)"
+      - "traefik.http.routers.fhir-${COMPOSE_PROJECT_NAME}.entrypoints=websecure"
+      - "traefik.http.routers.fhir-${COMPOSE_PROJECT_NAME}.tls=true"
+      - "traefik.http.routers.fhir-${COMPOSE_PROJECT_NAME}.tls.certresolver=letsencrypt"
+    networks:
+      - ingress
