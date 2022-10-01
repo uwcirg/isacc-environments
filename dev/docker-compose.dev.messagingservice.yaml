@@ -1,0 +1,11 @@
+# docker-compose development override for messaging service
+---
+version: "3.7"
+services:
+  messagingservice:
+    command: sh -c "cd /opt/app && flask run --host 0.0.0.0 --port ${PORT:-8000}"
+    environment:
+      FLASK_ENV: development
+    volumes:
+    # set in .env
+      - "${MESSAGINGSERVICE_CHECKOUT_DIR}/:/opt/app"
