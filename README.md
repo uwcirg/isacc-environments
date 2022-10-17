@@ -2,7 +2,7 @@
 ISACC environments, generates a full stack functional
 project conforming to the SMART on FHIR (SoF) protocol.
 
-Please also see the following component projects:
+Please also see the following repositories:
 - [ISACC Messaging Service](https://github.com/uwcirg/isacc-messaging-service). The server app managing SMS communications
 - [ISACC Messaging Client](https://github.com/uwcirg/isacc-messaging-client-sof). The SMART-on-FHIR web client
 
