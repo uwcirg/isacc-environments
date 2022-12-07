@@ -15,7 +15,7 @@ services:
 
 
   femr:
-    image: ghcr.io/uwcirg/cosri-patientsearch:${FEMR_IMAGE_TAG:-latest}
+    image: ghcr.io/uwcirg/cosri-patientsearch:${FEMR_IMAGE_TAG:-develop}
     env_file:
       femr.env
     environment:
