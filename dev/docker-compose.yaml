@@ -20,6 +20,7 @@ services:
       femr.env
     environment:
       APPLICATION_TITLE: ISACC
+      MORE_MENU: ""
       OIDC_AUTHORIZE_URL: "https://keycloak.${BASE_DOMAIN:-localtest.me}/auth/realms/fEMR/protocol/openid-connect/auth"
       OIDC_CLIENT_ID: femr_openid_client
       OIDC_ISSUER: "https://keycloak.${BASE_DOMAIN:-localtest.me}/auth/realms/fEMR"
