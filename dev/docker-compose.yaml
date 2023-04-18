@@ -105,7 +105,7 @@ services:
       - "traefik.http.middlewares.fhirwall-${COMPOSE_PROJECT_NAME}-cors.headers.accessControlAllowOriginList=*"
       # allow all verbs used by FHIR REST
       - "traefik.http.middlewares.fhirwall-${COMPOSE_PROJECT_NAME}-cors.headers.accessControlAllowMethods=HEAD,GET,OPTIONS,PATCH,POST,PUT,DELETE"
-      - "traefik.http.middlewares.fhirwall-${COMPOSE_PROJECT_NAME}-cors.headers.accessControlAllowHeaders=Authorization,Origin,Content-Type,Accept"
+      - "traefik.http.middlewares.fhirwall-${COMPOSE_PROJECT_NAME}-cors.headers.accessControlAllowHeaders=Authorization,Origin,Content-Type,Accept,cache-control"
       - "traefik.http.routers.fhirwall-${COMPOSE_PROJECT_NAME}.middlewares=fhirwall-${COMPOSE_PROJECT_NAME}-cors"
 
       - "traefik.http.routers.fhirwall-${COMPOSE_PROJECT_NAME}.rule=Host(`fhirwall.${BASE_DOMAIN:-localtest.me}`)"
