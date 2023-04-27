@@ -67,13 +67,6 @@ services:
       # make URLs relative to fEMR for pagination
       # TODO remove when fEMR can rewrite URLs
       hapi.fhir.server_address: 'https://femr.${BASE_DOMAIN:-localtest.me}/fhir/'
-    # expose HAPI to internet - remove entire `labels` section if unwanted
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.fhir-${COMPOSE_PROJECT_NAME}.rule=Host(`fhir.${BASE_DOMAIN:-localtest.me}`)"
-      - "traefik.http.routers.fhir-${COMPOSE_PROJECT_NAME}.entrypoints=websecure"
-      - "traefik.http.routers.fhir-${COMPOSE_PROJECT_NAME}.tls=true"
-      - "traefik.http.routers.fhir-${COMPOSE_PROJECT_NAME}.tls.certresolver=letsencrypt"
     volumes:
       - "./config/hapi/application.yaml:/opt/application.yaml:ro"
     depends_on:
