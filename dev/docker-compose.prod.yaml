@@ -1,0 +1,32 @@
+---
+version: "3.7"
+services:
+  db:
+    restart: unless-stopped
+
+  femr:
+    restart: unless-stopped
+
+  fhir:
+    restart: unless-stopped
+
+  fhirwall:
+    restart: unless-stopped
+
+  keycloak:
+    restart: unless-stopped
+
+  logs:
+    restart: unless-stopped
+
+  redis:
+    restart: unless-stopped
+
+  enrollment:
+    restart: unless-stopped
+
+  messaging:
+    restart: unless-stopped
+
+  messagingservice:
+    restart: unless-stopped
