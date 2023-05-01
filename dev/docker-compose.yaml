@@ -2,7 +2,7 @@
 version: "3.7"
 services:
   db:
-    image: postgres:${POSTGRES_IMAGE_TAG:-12}
+    image: postgres:${POSTGRES_IMAGE_TAG:-15}
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
