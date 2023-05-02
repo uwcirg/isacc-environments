@@ -2854,7 +2854,7 @@
       },
       {
         "id": "fe6ccba2-7bef-47db-8ca7-32b916dcdd8a",
-        "clientId": "hello_world_client",
+        "clientId": "enrollment",
         "name": "Enrollment Client",
         "description": "ISACC Enrollment Client",
         "surrogateAuthRequired": false,
@@ -2922,7 +2922,7 @@
       },
       {
         "id": "442354b5-a98c-4938-b62f-6333dc82435b",
-        "clientId": "screener_openid_client",
+        "clientId": "messaging",
         "name": "Messaging Client",
         "description": "ISACC Messaging client app",
         "surrogateAuthRequired": false,
