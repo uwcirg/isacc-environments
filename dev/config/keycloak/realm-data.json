@@ -2861,7 +2861,6 @@
         "enabled": true,
         "alwaysDisplayInConsole": false,
         "clientAuthenticatorType": "client-secret",
-        "secret": "${__KEYCLOAK_FEMR_REALM_ENROLLMENT_OPENID_CLIENT_SECRET}",
         "redirectUris": [
           "*"
         ],
@@ -2930,7 +2929,6 @@
         "enabled": true,
         "alwaysDisplayInConsole": false,
         "clientAuthenticatorType": "client-secret",
-        "secret": "${__KEYCLOAK_FEMR_REALM_MESSAGING_OPENID_CLIENT_SECRET}",
         "redirectUris": [
           "*"
         ],
