@@ -2260,7 +2260,7 @@
   {
     "id": "femr",
     "realm": "fEMR",
-    "displayName": "fEMR",
+    "displayName": "ISACC",
     "notBefore": 0,
     "revokeRefreshToken": false,
     "refreshTokenMaxReuse": 0,
