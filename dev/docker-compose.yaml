@@ -32,11 +32,17 @@ services:
       # TODO change to INTERNAL_FHIR_API
       # TODO switch to external API (requiring auth)
       MAP_API: "http://fhir-internal:8080/fhir/"
+      SEARCH_TITLE_TEXT: "Recipient Search"
       # FHIR URL passed to SoF client
       SOF_HOST_FHIR_URL: 'https://fhirwall.${BASE_DOMAIN:-localtest.me}/fhir'
       SOF_CLIENTS: '[{"id":"ENROLLMENT", "label":"Enrollment Client", "launch_url":"https://enrollment.${BASE_DOMAIN:-localtest.me}/launch.html"},{"id":"MESSAGING", "label":"Messaging Client", "launch_url":"https://messaging.${BASE_DOMAIN:-localtest.me}/launch.html"}]'
       LOGSERVER_URL: "https://logs.${BASE_DOMAIN:-localtest.me}"
       REDIS_URL: redis://redis:6379/1
+      DASHBOARD_COLUMNS: '[{"label": "First Name","expr": "$$.name[0].given[0]"},{"label":
+        "Last Name","expr": "$$.name[0].family"},{"label": "Birth Date","expr": "$$.birthDate"},{"label":
+        "Time Since Reply", "expr": "$$.extension[?(@.url==''http://isacc.app/time-of-last-unfollowedup-message'')].valueDateTime",
+        "dataType": "timeAgo", "sortBy": "time-of-last-unresponded-message"}]'
+
     depends_on:
       - fhirwall
       - keycloak
