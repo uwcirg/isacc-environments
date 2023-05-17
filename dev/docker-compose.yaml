@@ -244,7 +244,10 @@ services:
       FHIR_URL:  "http://fhir-internal:8080/fhir/"
       LOGSERVER_URL: "https://logs.${BASE_DOMAIN:-localtest.me}"
       TWILIO_WEBHOOK_CALLBACK: "https://messagingservice.${BASE_DOMAIN:-localtest.me}"
-      TORCH_MODEL_PATH: /opt/app/config/models/model_for_isacc
+      # Define location of model to use ML for incoming SMS "urgency"
+      # Commented out to avoid filling logs with file not found noise
+      # TORCH_MODEL_PATH: /opt/app/config/models/model_for_isacc
+
       ISACC_APP_URL: "https://femr.${BASE_DOMAIN:-localtest.me}"
     env_file:
       - messagingservice.env
