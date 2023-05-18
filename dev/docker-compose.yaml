@@ -22,6 +22,7 @@ services:
       APPLICATION_TITLE: ISACC
       ENABLE_PROVIDER_FILTER: "true"
       MORE_MENU: ""
+      NEED_PATIENT_BANNER: "true"
       NEW_PATIENT_EXTENSIONS: '[{"url": "http://isacc.app/time-of-last-unfollowedup-message", "valueDateTime": "2073-01-01T00:00:00.0+00:00"}]'
       OIDC_AUTHORIZE_URL: "https://keycloak.${BASE_DOMAIN:-localtest.me}/auth/realms/fEMR/protocol/openid-connect/auth"
       OIDC_CLIENT_ID: femr_openid_client
