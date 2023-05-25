@@ -43,7 +43,7 @@ services:
       DASHBOARD_COLUMNS: '[{"label": "First Name","expr": "$$.name[0].given[0]"},{"label":
         "Last Name","expr": "$$.name[0].family"},{"label": "Birth Date","expr": "$$.birthDate"},{"label":
         "Time Since Reply", "expr": "$$.extension[?(@.url==''http://isacc.app/time-of-last-unfollowedup-message'')].valueDateTime",
-        "dataType": "timeAgo", "defaultSort": "desc", "sortBy": "time-of-last-unresponded-message"}]'
+        "dataType": "timeAgo", "defaultSort": "asc", "sortBy": "time-of-last-unresponded-message"}]'
 
     depends_on:
       - fhirwall
