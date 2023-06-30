@@ -20,6 +20,7 @@ services:
       femr.env
     environment:
       APPLICATION_TITLE: ISACC
+      LAUNCH_AFTER_PATIENT_CREATION: "true"
       ENABLE_PROVIDER_FILTER: "true"
       MORE_MENU: ""
       NEED_PATIENT_BANNER: "true"
