@@ -42,10 +42,14 @@ services:
       LOGSERVER_URL: "https://logs.${BASE_DOMAIN:-localtest.me}"
       REDIS_URL: redis://redis:6379/1
       MY_PATIENTS_FILTER_LABEL: "Recipients I am following"
-      DASHBOARD_COLUMNS: '[{"label": "First Name","expr": "$$.name[0].given[0]"},{"label":
-        "Last Name","expr": "$$.name[0].family"},{"label": "Birth Date","expr": "$$.birthDate"},{"label":
-        "Time Since Reply", "expr": "$$.extension[?(@.url==''http://isacc.app/time-of-last-unfollowedup-message'')].valueDateTime",
-        "dataType": "timeAgo", "defaultSort": "asc", "sortBy": "time-of-last-unresponded-message"}]'
+      DASHBOARD_COLUMNS: >-
+        [
+        {"expr":"$$.name[0].given[0]","label":"First Name"},
+        {"expr":"$$.name[0].family","label":"Last Name"},
+        {"expr":"$$.birthDate","label":"Birth Date"},
+        {"dataType":"timeAgo","defaultSort":"asc","expr":"$$.extension[?(@.url==''http://isacc.app/time-of-last-unfollowedup-message'')].valueDateTime","label":"Time Since Reply","sortBy":"time-of-last-unresponded-message"},
+        {"expr":"$$.generalPractitioner[0].display","label":"PrimaryAuthor","sortBy":"general-practitioner"}
+        ]
 
     depends_on:
       - fhirwall
