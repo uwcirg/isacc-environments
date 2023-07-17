@@ -207,6 +207,8 @@ services:
     environment:
       REACT_APP_DASHBOARD_URL: "https://femr.${BASE_DOMAIN:-localtest.me}"
       REACT_APP_CLIENT_ID: enrollment
+    env_file:
+      - messaging.env
     depends_on:
       - fhir
     labels:
@@ -223,6 +225,8 @@ services:
     environment:
       REACT_APP_DASHBOARD_URL: "https://femr.${BASE_DOMAIN:-localtest.me}"
       REACT_APP_CLIENT_ID: messaging
+    env_file:
+      - messaging.env
     depends_on:
       - fhir
     labels:
