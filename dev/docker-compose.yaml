@@ -48,7 +48,7 @@ services:
         {"expr":"$$.name[0].family","label":"Last Name"},
         {"expr":"$$.birthDate","label":"Birth Date"},
         {"dataType":"timeAgo","defaultSort":"asc","expr":"$$.extension[?(@.url=='http://isacc.app/time-of-last-unfollowedup-message')].valueDateTime","label":"Time Since Reply","sortBy":"time-of-last-unresponded-message"},
-        {"expr":"$$.generalPractitioner[0].display","label":"PrimaryAuthor","sortBy":"general-practitioner"}
+        {"expr":"$$.generalPractitioner[0].display","label":"Primary Author","sortBy":"general-practitioner"}
         ]
 
     depends_on:
