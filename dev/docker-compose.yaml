@@ -22,6 +22,8 @@ services:
       APPLICATION_TITLE: ISACC
       LAUNCH_AFTER_PATIENT_CREATION: "true"
       ENABLE_PROVIDER_FILTER: "true"
+      ENABLE_FILTER_FOR_TEST_PATIENTS: "true"
+      FILTER_FOR_TEST_PATIENTS_LABEL: "Include test recipients"
       MORE_MENU: ""
       NEED_PATIENT_BANNER: "true"
       NEW_PATIENT_EXTENSIONS: '[{"url": "http://isacc.app/time-of-last-unfollowedup-message", "valueDateTime": "2073-01-01T00:00:00.0+00:00"}]'
