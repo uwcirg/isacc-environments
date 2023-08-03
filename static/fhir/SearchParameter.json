@@ -1,0 +1,11 @@
+{
+      "resourceType": "SearchParameter",
+      "url": "http://isacc.app/search-param-time-of-last-unfollowedup-message",
+      "name": "SearchParamTimeOfLastUnrespondedMessage",
+      "status": "active",
+      "description": "Search by time of the last message that the patient sent which has not received appropriate followup. The extension/value of the extension does not exist if the patient has no such message.",
+      "code": "time-of-last-unresponded-message",
+      "base": [ "Patient" ],
+      "type": "date",
+      "expression": "Patient.extension('http://isacc.app/time-of-last-unfollowedup-message').value"
+    }

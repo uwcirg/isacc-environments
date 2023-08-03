@@ -1,0 +1,14 @@
+{
+  "resourceType": "Practitioner",
+  "active": true,
+  "name": [ {
+    "family": "Test",
+    "given": [ "Test" ]
+  } ],
+  "telecom": [ {
+    "system": "email",
+    "value": "test@test.org"
+  } ],
+  "gender": "female"
+}
+
