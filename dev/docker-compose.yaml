@@ -46,6 +46,7 @@ services:
       MY_PATIENTS_FILTER_LABEL: "Recipients I am following"
       DASHBOARD_COLUMNS: >-
         [
+        {"expr":"$$.identifier[?(@.system=='http://isacc.app/user-id')].value","label":"ISACC Study ID","sortBy":"identifier"},
         {"expr":"$$.name[0].given[0]","label":"First Name"},
         {"expr":"$$.name[0].family","label":"Last Name"},
         {"expr":"$$.birthDate","label":"Birth Date"},
