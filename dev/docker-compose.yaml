@@ -254,6 +254,7 @@ services:
       # Define location of model to use ML for incoming SMS "urgency"
       # Commented out to avoid filling logs with file not found noise
       # TORCH_MODEL_PATH: /opt/app/config/models/model_for_isacc
+      ISACC_NOTIFICATION_EMAIL_SENDER_NAME: noreply@femr.${BASE_DOMAIN:-localtest.me}
 
       ISACC_APP_URL: "https://femr.${BASE_DOMAIN:-localtest.me}"
     env_file:
