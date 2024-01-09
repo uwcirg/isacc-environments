@@ -88,15 +88,20 @@ def main():
                 communication = entry['resource']
                 communication_id = communication.get('id')
                 datetime = communication.get('sent')
-                recipient_reference = communication.get('recipient', [{}])[0].get('reference')
-                if recipient_reference == None: # these are messages from a "recipient"(patient) to the system
+                type = extract_type(communication)
+                if type in ['isacc-comment', 'isacc-non-sms-message']:
+                    recipient_reference = communication.get('subject', {}).get('reference')
+                else:
+                    recipient_reference = communication.get('recipient', [{}])[0].get('reference')
+                if recipient_reference == None:
                     recipient_reference = communication.get('sender', {}).get('reference')
                 isacc_id = get_patient_isacc_id(recipient_reference, patient_cache)
-                type = extract_type(communication)
                 content = communication.get('payload', [{}])[0].get('contentString')
                 if content:
                     content = content.replace('\n', '\\n')
                 sender = communication.get('sender', {}).get('reference')
+                if sender == None and type == 'isacc-auto-sent-message':
+                    sender = 'system'
                 note = communication.get('note', [{}])[0].get('text')
                 if note:
                     note = note.replace('\n', '\\n')
