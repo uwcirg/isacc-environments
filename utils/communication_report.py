@@ -10,16 +10,13 @@ def get_fhir_resource(url):
 
     print(f"get_fhir_resource({url}), just entered.")
 
-    # Construct the command to be executed
     command = f"docker-compose exec femr curl -X GET {url}"
-    # Run the command
     result = subprocess.run(command, shell=True, capture_output=True, text=True)
 
     print(f"get_fhir_resource({url}), subprocess has been run.")
 
     if result.returncode != 0:
-        # Handle errors (e.g., command failed)
-        raise Exception(f"get_fhir_resource({url}), dommand failed with exit code {result.returncode}: {result.stderr}")
+        raise Exception(f"get_fhir_resource({url}), command failed with exit code {result.returncode}: {result.stderr}")
 
     #print(f"get_fhir_resource({url}), result.stdout:{result.stdout}")
 
@@ -27,7 +24,6 @@ def get_fhir_resource(url):
     try:
         return json.loads(result.stdout)
     except json.JSONDecodeError:
-        # Handle cases where output is not valid JSON
         raise Exception(f"get_fhir_resource({url}), failed to parse JSON from command output")
 
 #    response = requests.get(url)
@@ -79,7 +75,6 @@ def extract_type(communication):
     return None
 
 def main():
-    #url = "http://fhir-internal:8080/fhir/Communication?_sort=sent\&_count=1000"
     url = f"{base_url}/Communication?_sort=sent"
     patient_cache = {}
 
@@ -94,7 +89,7 @@ def main():
                 communication_id = communication.get('id')
                 datetime = communication.get('sent')
                 recipient_reference = communication.get('recipient', [{}])[0].get('reference')
-                if recipient_reference == None:
+                if recipient_reference == None: # these are messages from a "recipient"(patient) to the system
                     recipient_reference = communication.get('sender', {}).get('reference')
                 isacc_id = get_patient_isacc_id(recipient_reference, patient_cache)
                 type = extract_type(communication)
