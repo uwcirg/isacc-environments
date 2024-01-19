@@ -248,6 +248,8 @@ services:
       REQUEST_CACHE_URL: redis://redis:6379/1
       SESSION_REDIS: redis://redis:6379/0
       PREFERRED_URL_SCHEME: https
+      ACTIVE_PATIENT_FLAG: "true"
+      REACTIVATE_PATIENT: "true"
       FHIR_URL:  "http://fhir-internal:8080/fhir/"
       LOGSERVER_URL: "https://logs.${BASE_DOMAIN:-localtest.me}"
       TWILIO_WEBHOOK_CALLBACK: "https://messagingservice.${BASE_DOMAIN:-localtest.me}"
