@@ -20,6 +20,7 @@ services:
       femr.env
     environment:
       APPLICATION_TITLE: ISACC
+      ACTIVE_PATIENT_FLAG: "true"
       LAUNCH_AFTER_PATIENT_CREATION: "true"
       ENABLE_PROVIDER_FILTER: "true"
       ENABLE_FILTER_FOR_TEST_PATIENTS: "true"
@@ -37,6 +38,7 @@ services:
       # TODO change to INTERNAL_FHIR_API
       # TODO switch to external API (requiring auth)
       MAP_API: "http://fhir-internal:8080/fhir/"
+      REACTIVATE_PATIENT: "true"
       SEARCH_TITLE_TEXT: "Recipient Search"
       # FHIR URL passed to SoF client
       SOF_HOST_FHIR_URL: 'https://fhirwall.${BASE_DOMAIN:-localtest.me}/fhir'
