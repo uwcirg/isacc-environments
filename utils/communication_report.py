@@ -1,5 +1,6 @@
 '''
-This script is intended to be run from the /dev directory of the deployment that you want to 
+This script generates a CSV file of all Communication resources in the system.
+It's intended to be run from the /dev directory of the deployment that you want to 
 report from; it requires no modification to be run from that location.
 It accepts no arguments.
 '''
