@@ -8,7 +8,6 @@ It accepts no arguments.
 
 import subprocess
 import json
-import requests
 import csv
 import urllib.parse
 
