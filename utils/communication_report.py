@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 '''
 This script generates a CSV file of all Communication resources in the system.
 It's intended to be run from the /dev directory of the deployment that you want to 
