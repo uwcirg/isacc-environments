@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 '''
 This script generates a CSV file of all Communication resources in the system.
-It's intended to be run from the /dev directory of the deployment that you want to 
-report from; it requires no modification to be run from that location.
+To run: 
+  docker-compose run --volume=${PWD}/utils:/opt/utils femr \
+    python3 /opt/utils/communication_report.py
 It accepts no arguments.
 '''
 
