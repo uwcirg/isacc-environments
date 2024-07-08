@@ -30,3 +30,6 @@ services:
 
   messagingservice:
     restart: unless-stopped
+
+  isaccml:
+    restart: unless-stopped

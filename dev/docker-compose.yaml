@@ -276,6 +276,28 @@ services:
     depends_on:
       - redis
 
+  isaccml:
+    image: ghcr.io/uwcirg/isacc-messaging-service:${ISACCML_IMAGE_TAG:-latest}
+    environment:
+      PREFERRED_URL_SCHEME: https
+      FHIR_URL:  "http://fhir-internal:8080/fhir/"
+      LOGSERVER_URL: "https://logs.${BASE_DOMAIN:-localtest.me}"
+
+      ISACC_APP_URL: "https://femr.${BASE_DOMAIN:-localtest.me}"
+    env_file:
+      - isaccml.env
+    volumes:
+      - ./config/isaccml:/opt/app/config:ro
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.isaccml-${COMPOSE_PROJECT_NAME}.rule=Host(`isaccml.${BASE_DOMAIN:-localtest.me}`)"
+      - "traefik.http.routers.isaccml-${COMPOSE_PROJECT_NAME}.entrypoints=websecure"
+      - "traefik.http.routers.isaccml-${COMPOSE_PROJECT_NAME}.tls=true"
+      - "traefik.http.routers.isaccml-${COMPOSE_PROJECT_NAME}.tls.certresolver=letsencrypt"
+    networks:
+      - ingress
+      - internal
+
 volumes:
   db-data: {}
 
