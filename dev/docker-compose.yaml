@@ -292,8 +292,6 @@ services:
       - "traefik.http.routers.isaccml-${COMPOSE_PROJECT_NAME}.tls=true"
       - "traefik.http.routers.isaccml-${COMPOSE_PROJECT_NAME}.tls.certresolver=letsencrypt"
     networks:
-      - ingress
-      - internal
       internal:
         aliases:
           - fhir-internal
