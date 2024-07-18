@@ -277,13 +277,10 @@ services:
       - redis
 
   isaccml:
-    image: ghcr.io/uwcirg/isacc-messaging-service:${ISACCML_IMAGE_TAG:-latest}
+    image: ghcr.io/uwcirg/isacc-ml:${ISACCML_IMAGE_TAG:-main}
     environment:
       PREFERRED_URL_SCHEME: https
-      FHIR_URL:  "http://fhir-internal:8080/fhir/"
       LOGSERVER_URL: "https://logs.${BASE_DOMAIN:-localtest.me}"
-
-      ISACC_APP_URL: "https://femr.${BASE_DOMAIN:-localtest.me}"
     env_file:
       - isaccml.env
     volumes:
@@ -297,6 +294,9 @@ services:
     networks:
       - ingress
       - internal
+      internal:
+        aliases:
+          - fhir-internal
 
 volumes:
   db-data: {}
