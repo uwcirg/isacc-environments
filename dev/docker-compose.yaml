@@ -253,9 +253,9 @@ services:
       FHIR_URL:  "http://fhir-internal:8080/fhir/"
       LOGSERVER_URL: "https://logs.${BASE_DOMAIN:-localtest.me}"
       TWILIO_WEBHOOK_CALLBACK: "https://messagingservice.${BASE_DOMAIN:-localtest.me}"
-      # Define location of model to use ML for incoming SMS "urgency"
+      # Define address hosting the model to use ML for incoming SMS "urgency"
       # Commented out to avoid filling logs with file not found noise
-      # TORCH_MODEL_PATH: /opt/app/config/models/model_for_isacc
+      # ML_SERVICE_ADDRESS: "http://isaccml:8000"
       ISACC_NOTIFICATION_EMAIL_SENDER_NAME: noreply@femr.${BASE_DOMAIN:-localtest.me}
       ISACC_SUPPORT_EMAIL: ccstudyteam@uw.edu
 
@@ -275,6 +275,21 @@ services:
       - internal
     depends_on:
       - redis
+
+  isaccml:
+    image: ghcr.io/uwcirg/isacc-ml:${ISACCML_IMAGE_TAG:-main}
+    environment:
+      LOGSERVER_URL: "https://logs.${BASE_DOMAIN:-localtest.me}"
+      # Define path to the model to use ML for incoming SMS "urgency"
+      # Commented out to avoid filling logs with file not found noise
+      TORCH_MODEL_PATH: "/opt/app/config/models/model_for_isacc"
+
+    env_file:
+      - isaccml.env
+    volumes:
+      - ./config/messagingservice:/opt/app/config:ro
+    networks:
+      - internal
 
 volumes:
   db-data: {}
