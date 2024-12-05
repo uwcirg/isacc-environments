@@ -88,7 +88,7 @@ def main():
 
     with open('CommunicationReport.csv', 'w', newline='') as file:
         writer = csv.writer(file)
-        writer.writerow(["ID", "Datetime", "Recipient FHIR ID", "Recipient ISACC ID", "Type", "Content", "Sender", "Note"])
+        writer.writerow(["ID", "Datetime", "Recipient FHIR ID", "Recipient ISACC ID", "Type", "Status", "Content", "Sender", "Note"])
 
         while url:
             data = get_fhir_resource(url)
@@ -96,6 +96,7 @@ def main():
                 communication = entry['resource']
                 communication_id = communication.get('id')
                 datetime = communication.get('sent')
+                status = communication.get('status')
                 type = extract_type(communication)
                 if type in ['isacc-comment', 'isacc-non-sms-message']:
                     recipient_reference = communication.get('subject', {}).get('reference')
@@ -114,7 +115,7 @@ def main():
                 if note:
                     note = note.replace('\n', '\\n')
 
-                writer.writerow([communication_id, datetime, recipient_reference, isacc_id, type, content, sender, note])
+                writer.writerow([communication_id, datetime, recipient_reference, isacc_id, type, status, content, sender, note])
 
             # Check for 'next' link for pagination
             next_link = None
