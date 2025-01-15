@@ -247,6 +247,7 @@ services:
   messagingservice:
     image: ghcr.io/uwcirg/isacc-messaging-service:${MESSAGINGSERVICE_IMAGE_TAG:-latest}
     environment:
+      MIGRATION_SCRIPTS_DIR: migrations/versions
       REQUEST_CACHE_URL: redis://redis:6379/1
       SESSION_REDIS: redis://redis:6379/0
       PREFERRED_URL_SCHEME: https
