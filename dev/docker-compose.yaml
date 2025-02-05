@@ -276,6 +276,7 @@ services:
       - internal
     depends_on:
       - redis
+      - logs
 
   isaccml:
     image: ghcr.io/uwcirg/isacc-ml:${ISACCML_IMAGE_TAG:-main}
