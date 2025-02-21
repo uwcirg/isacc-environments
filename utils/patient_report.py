@@ -55,11 +55,11 @@ def construct_next_url(next_url):
     return new_url
 
 def main():
-    url = f"{base_url}/Patient?_sort=sent"
+    url = f"{base_url}/Patient"
 
     with open('PatientReport.csv', 'w', newline='') as file:
         writer = csv.writer(file)
-        writer.writerow(["FHIR ID", "ISACC ID", "First Name", "Last Name", "Preferred Name"])
+        writer.writerow(["FHIR ID", "ISACC ID", "Last Name", "First Name", "Preferred Name"])
 
         while url:
             data = get_fhir_resource(url)
@@ -75,23 +75,22 @@ def main():
                         isacc_id = identifier.get('value', "")
                         break
 
-        		families = []
-        		givens = []
-        		preferred_given = ""
-        		for name in patient.get("name", []):
-            		# Append the family name if it exists.
-            		if "family" in name:
-                		families.append(name["family"])
-            		# Append the given names (which is a list) if they exist.
-            		if "given" in name:
-                		# Join given names with a space.
-                		given_str = " ".join(name["given"])
-                		givens.append(given_str)
-            		# If the name's use is "usual", capture its given names.
-            		if name.get("use") == "usual" and "given" in name:
-                		preferred_given = " ".join(name["given"])
+                family = ""
+                givens = []
+                preferred_given = ""
+                for name in patient.get("name", []):
+                    # Append the family name if it exists.
+                    if "family" in name:
+                        family = name["family"]
+                        if "given" in name:
+                            # Join given names with a space.
+                            given_str = " ".join(name["given"])
+                            givens.append(given_str)
+                    # If the name's use is "usual", capture its given names.
+                    if name.get("use") == "usual" and "given" in name:
+                        preferred_given = " ".join(name["given"])
 
-                writer.writerow([patient_id, isacc_id, join(givens), join(families), preferred_given])
+                writer.writerow([patient_id, isacc_id, family, ''.join(givens), preferred_given])
 
             # Check for 'next' link for pagination
             next_link = None
