@@ -95,7 +95,7 @@ def main():
             for entry in data.get('entry', []):
                 cr = entry['resource']
                 cr_id = cr.get('id')
-                datetime = cr.get('occurenceDateTime')
+                datetime = cr.get('occurrenceDateTime')
                 status = cr.get('status')
                 type = extract_type(cr)
                 if type in ['isacc-comment', 'isacc-non-sms-message']:
