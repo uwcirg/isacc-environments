@@ -3,17 +3,17 @@
 DOCKER_CONTAINER="femr"
 FHIR_BASE_URL="http://fhir-internal:8080/fhir"
 # prod
-#OLD_PRACTITIONER="Practitioner/6"
-#NEW_PRACTITIONER="Practitioner/7"
-#NEW_DISPLAY="Wright, Riley"
+OLD_PRACTITIONER="Practitioner/6"
+NEW_PRACTITIONER="Practitioner/7"
+NEW_DISPLAY="Wright, Riley"
 # eval
 #OLD_PRACTITIONER="Practitioner/699"
 #NEW_PRACTITIONER="Practitioner/700"
 #NEW_DISPLAY="Wright, Barbara"
 # eval 2
-OLD_PRACTITIONER="Practitioner/21"
-NEW_PRACTITIONER="Practitioner/699"
-NEW_DISPLAY="Evanson, Anna"
+#OLD_PRACTITIONER="Practitioner/21"
+#NEW_PRACTITIONER="Practitioner/699"
+#NEW_DISPLAY="Evanson, Anna"
 
 # Colors for output
 GREEN='\033[0;32m'
@@ -44,8 +44,8 @@ fi
 echo -e "${GREEN}Found $PATIENT_COUNT patient(s) to update${NC}"
 echo ""
 
-#echo "Dry run, exiting."
-#exit 0
+echo "Dry run, exiting. To do the PATCH's, comment out this line and the next one in the script."
+exit 0
 
 # Counter for success/failure
 SUCCESS_COUNT=0
